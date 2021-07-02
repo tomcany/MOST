@@ -291,12 +291,13 @@
     opacity: 0.1;
 }
 #index-slider #slide4 .meter-box {
-    animation: meterbox 2s ease-out;
+    animation: meterbox 1s ease;
     transform: scale(0);
     animation-fill-mode: forwards;
 }
 @keyframes meterbox {
     0% {transform: scale(0)}
+    60% {transform: scale(1.1)}
     100% {transform: scale(1)}
 }
 #index-slider #slide4 .meter-box .icon {
@@ -320,7 +321,7 @@
     top: 50%;
     right: 15px;
     transform: translate(-50%, -50%);
-    animation: meterboxarrow 2s ease-out;
+    animation: meterboxarrow 1s ease-out;
     animation-fill-mode: forwards;
 }
 @keyframes meterboxarrow {
