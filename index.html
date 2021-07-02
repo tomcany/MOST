@@ -18,11 +18,17 @@
         <link rel="icon" href="/favicon.ico">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="slides.css">
+        <script src="jquery/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="chartjs/chart.min.js"></script>
     </head>
 
     <body>
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Work+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
             .menu, .body-content {
                 display: flex;
                 justify-content: center;
@@ -36,228 +42,524 @@
             .body-content {
                 height: 400px;
             }
-            .slide {
-                position: relative;
-                width: 100%;
-                height: 860px;
-            }
-            .slide-content {
-                width: 1000px;
-                margin: auto;
-                padding: 160px 0;
-                position: relative;
-                z-index: 100;
-            }
             body {
                 font-family: 'Work Sans', sans-serif;
                 font-weight: normal;
                 margin: 0;
                 color: #383937;
             }
-            .most-title {
-                font-family: 'Fredericka the Great', cursive;
-                color: #88adcf;
-                font-weight: normal;
-                font-size: 150px;
-                text-align: center;
-                margin: 0;
-            }
-            .secondary-title {
-                font-weight: normal;
-                text-align: center;
-                font-size: 46px;
-                font-size: 42px;
-                margin: 0;
-                margin-top: 15px;
-            }
-            .image-area {
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-                z-index: -1;
-            }
-            #canvas {
-                position: relative;
-                overflow: hidden;
-            }
-            #canvas img, #canvas div {
-                position: absolute;
-                z-index: -20;
-            }
-            #canvas img.canvas-background {
-                position: relative;
-                z-index: -100;
-                display: block;
-            }
-            
-            #canvas img.canvas-background {
-                position: relative;
-                z-index: -100;
-            }
-            #foreground {
-                width: 15%;
-                bottom: 4%;
-                left: 63%;
-                z-index: -10 !important;
-            }
-
-            #taxi {
-                width: 5%;
-                bottom: 7%;
-                left: 15%;
-                animation: taxi 40s infinite linear;
-                animation-delay: -2s;
-            }
-            #taxi .taxi-body {
-                position: relative !important;
-            }
-            #taxi .taxi-wheel {
-                position: absolute;
-                width: 18%;
-                left: 5%;
-                bottom: -2%;
-                animation: taxiwheel 2s infinite linear;
-            }
-            #taxi .taxi-wheel:last-of-type {
-                left: 72%;
-            }
-            @keyframes taxi {
-                from {left: -5%}
-                to {left: 105%}
-            }
-            @keyframes taxiwheel {
-                from {transform: rotate(0)}
-                to {transform: rotate(360deg)}
-            }
-
-            #redcar {
-                width: 5%;
-                bottom: 11%;
-                left: 15%;
-                animation: redcar 30s infinite linear;
-                animation-delay: -5s;
-                z-index: -21 !important;
-            }
-            #redcar .redcar-body {
-                position: relative !important;
-            }
-            #redcar .redcar-wheel {
-                position: absolute;
-                width: 15%;
-                left: 10%;
-                bottom: -2%;
-                animation: redcarwheel 1.5s infinite linear;
-            }
-            #redcar .redcar-wheel:last-of-type {
-                left: 77%;
-            }
-            @keyframes redcar {
-                from {left: 105%}
-                to {left: -5%}
-            }
-            @keyframes redcarwheel {
-                from {transform: rotate(0)}
-                to {transform: rotate(-360deg)}
-            }
-
-            .fan {
-                width: 4.5%;
-                animation: fan 10s infinite linear;
-                transform-origin: 60% 55%;
-            }
-            @keyframes fan {
-                0% {transform: rotate(0)}
-                100% {transform: rotate(-360deg)}
-            }
-
-            .clouds {
-                top: 0;
-                width: 90%;
-                animation: clouds 120s infinite linear;
-            }
-            @keyframes clouds {
-                0% {left: -100%}
-                100% {left: 100%}
-            }
-
-            .balloon-wrapper {
-                width: 3%;
-                left: 52%;
-                bottom: 91%;
-                animation: balloonmove 15s infinite ease;
-            }
-            .balloon {
-                animation: balloonrotate 15s infinite ease;
-            }
-            @keyframes balloonmove {
-                0% {transform: translate(0, 0)}
-                50% {transform: translate(100%, 0)}
-                100% {transform: translate(0, 0)}
-            }
-            @keyframes balloonrotate {
-                0% {transform: rotate(0)}
-                15% {transform: rotate(10deg)}
-                50% {transform: rotate(0)}
-                65% {transform: rotate(-10deg)}
-                100% {transform: rotate(0)}
-            }
-
-            .airplane {
-                top: 0;
-                width: 5%;
-                animation: airplane 30s infinite linear;
-            }
-            @keyframes airplane {
-                0% {left: -5%}
-                100% {left: 105%}
-            }
-
-
         </style>
-            <div class="menu">
-                <h1>SITE HEADER</h1>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <h1 class="most-title">MOST project</h1>
-                    <h3 class="secondary-title">Master education on smart grid technologies</h3>
-                </div>
-                <div class="image-area">
-                    <div id="canvas">
-                        <img id="foreground" src="images/slide1/foreground.svg"/>
-                        <img class="airplane" src="images/slide1/airplane.svg"/>
-                        <div class="balloon-wrapper">
-                            <img class="balloon" src="images/slide1/balloon.svg"/>
+
+        <div class="menu">
+            <h1>SITE HEADER</h1>
+        </div>
+
+        <div id="index-slider" class="carousel slide" data-ride="carousel" data-interval="false">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#index-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#index-slider" data-slide-to="1"></li>
+                <li data-target="#index-slider" data-slide-to="2"></li>
+                <li data-target="#index-slider" data-slide-to="3"></li>
+                <li data-target="#index-slider" data-slide-to="4"></li>
+                <li data-target="#index-slider" data-slide-to="5"></li>
+                <li data-target="#index-slider" data-slide-to="6"></li>
+                <li data-target="#index-slider" data-slide-to="7"></li>
+            </ul>
+            
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div id="slide1" class="carousel-item active">
+                    <!-- SLIDE 1 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="first-slide-title-area">
+                                <h1 class="most-title">MOST project</h1>
+                                <h1 class="secondary-title">Master education on smart grid technologies</h1>
+                            </div>
                         </div>
-                        <img class="fan" style="left:1%; bottom:57%; animation-delay: -5s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left: 7.9%; bottom: 63.5%; width: 3.7%; animation-delay: -7s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left: 41.6%; bottom: 62%; width: 4%; animation-delay: -2s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left:47%; bottom:58%; animation-delay: -3s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left:55.6%; bottom:62%; animation-delay: -0s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left:60.5%; bottom:63%; animation-delay: -9s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left:87.4%; bottom:65%; animation-delay: -3s" src="images/slide1/fan.svg"/>
-                        <img class="fan" style="left:92.8%; bottom:62%; animation-delay: 0" src="images/slide1/fan.svg"/>
-                        <div id="taxi">
-                            <img class="taxi-body" src="images/slide1/taxi.svg"/>
-                            <img class="taxi-wheel" src="images/slide1/taxi-wheel.svg"/> 
-                            <img class="taxi-wheel" src="images/slide1/taxi-wheel.svg"/> 
+                    </div>
+                    <div class="image-area">
+                        <div class="canvas">
+                            <img id="foreground" src="images/slide1/foreground.svg"/>
+                            <img class="airplane" src="images/slide1/airplane.svg"/>
+                            <div class="balloon-wrapper">
+                                <img class="balloon" src="images/slide1/balloon.svg"/>
+                            </div>
+                            <img class="fan" style="left:1%; bottom:57%; animation-delay: -5s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left: 7.9%; bottom: 63.5%; width: 3.7%; animation-delay: -7s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left: 41.6%; bottom: 62%; width: 4%; animation-delay: -2s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left:47%; bottom:58%; animation-delay: -3s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left:55.6%; bottom:62%; animation-delay: -0s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left:60.5%; bottom:63%; animation-delay: -9s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left:87.4%; bottom:65%; animation-delay: -3s" src="images/slide1/fan.svg"/>
+                            <img class="fan" style="left:92.8%; bottom:62%; animation-delay: 0" src="images/slide1/fan.svg"/>
+                            <div id="taxi">
+                                <img class="taxi-body" src="images/slide1/taxi.svg"/>
+                                <img class="taxi-wheel" src="images/slide1/taxi-wheel.svg"/> 
+                                <img class="taxi-wheel" src="images/slide1/taxi-wheel.svg"/> 
+                            </div>
+                            <div id="redcar">
+                                <img class="redcar-body" src="images/slide1/redcar.svg"/>
+                                <img class="redcar-wheel" src="images/slide1/redcar-wheel.svg"/> 
+                                <img class="redcar-wheel" src="images/slide1/redcar-wheel.svg"/> 
+                            </div>
+                            <img class="clouds" src="images/slide1/clouds.svg"/>
+                            <img class="clouds" style="animation-delay: -60s" src="images/slide1/clouds.svg"/>
+                            <img class="canvas-background" src="images/slide1/city-background.svg"/>
                         </div>
-                        <div id="redcar">
-                            <img class="redcar-body" src="images/slide1/redcar.svg"/>
-                            <img class="redcar-wheel" src="images/slide1/redcar-wheel.svg"/> 
-                            <img class="redcar-wheel" src="images/slide1/redcar-wheel.svg"/> 
-                        </div>
-                        <img class="clouds" src="images/slide1/clouds.svg"/>
-                        <img class="clouds" style="animation-delay: -60s" src="images/slide1/clouds.svg"/>
-                        <img class="canvas-background" src="images/slide1/city-background.svg"/>
                     </div>
                 </div>
+                <div id="slide2" class="carousel-item">
+                    <!-- SLIDE 2 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Energy transition</h1>
+                                <h4 class="secondary-title">Sustainable goals towards affordable and clean energy</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col slide2-box">
+                                    <div>
+                                        <h3>Digitalization</h3>
+                                        <p>Smart grid is digital, interconnected and automated, with many technologies involved, including artificial intelligence or the Internet of Things.</p>
+                                    </div>
+                                </div>
+                                <div class="col slide2-box">
+                                    <div>
+                                        <h3>Decarbonization</h3>
+                                        <p>Smart Grid is a set of technologies and procedures to foster renewable energy sources (RES), efficiency, and electrification of end-users.</p>
+                                    </div>
+                                </div>
+                                <div class="col slide2-box">
+                                    <div>
+                                        <h3>Decentralization</h3>
+                                        <p>Smart Grid provides tools to enable the decentralized operation of energy systems that is crucial to efficiently manage RES while adding flexibility.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="image-area">
+                        <div class="canvas">
+                            <img class="slide2-smokecloud" style="width: 10%;left: 16%;bottom: 78%;animation-delay: -5s;" src="images/slide2/smokecloud1.svg"/>
+                            <img class="slide2-smokecloud" style="width: 16%;left: 16%;bottom: 71%;animation-delay: -10s;" src="images/slide2/smokecloud2.svg"/>
+                            <img class="slide2-smokecloud" style="width: 8%;left: 16%;bottom: 65%;animation-delay: -15s;" src="images/slide2/smokecloud3.svg"/>
+                            <div class="smoke-container" style="width: 8%;left: 9.5%;bottom: 56%;">
+                                <div class="slide2-smokeopacity">
+                                    <img class="slide2-smoke" src="images/slide2/smoke3.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -1.66s;">
+                                    <img class="slide2-smoke" style="animation-delay: -1.66s;" src="images/slide2/smoke3.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -3.33s;">
+                                    <img class="slide2-smoke" style="animation-delay: -3.33s;" src="images/slide2/smoke3.svg"/>
+                                </div>
+                            </div>
+                            <div class="smoke-container" style="width: 7%;left: 16%;bottom: 50%;">
+                                <div class="slide2-smokeopacity">
+                                    <img class="slide2-smoke" src="images/slide2/smoke2.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -1.66s;">
+                                    <img class="slide2-smoke" style="animation-delay: -1.66s;" src="images/slide2/smoke2.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -3.33s;">
+                                    <img class="slide2-smoke" style="animation-delay: -3.33s;" src="images/slide2/smoke2.svg"/>
+                                </div>
+                            </div>
+                            <div class="smoke-container" style="width: 4%;left: 28.1%;bottom: 60%;">
+                                <div class="slide2-smokeopacity">
+                                    <img class="slide2-smoke" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -1.66s;">
+                                    <img class="slide2-smoke" style="animation-delay: -1.66s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -3.33s;">
+                                    <img class="slide2-smoke" style="animation-delay: -3.33s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                            </div>
+                            <div class="smoke-container" style="width: 4%;left: 25.9%;bottom: 63%;">
+                                <div class="slide2-smokeopacity" style="animation-delay: -1s;">
+                                    <img class="slide2-smoke" style="animation-delay: -1s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -2.66s;">
+                                    <img class="slide2-smoke" style="animation-delay: -2.66s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -4.33;">
+                                    <img class="slide2-smoke" style="animation-delay: -4.33;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                            </div>
+                            <div class="smoke-container" style="width: 5%;left: 23%;bottom: 71%;">
+                                <div class="slide2-smokeopacity" style="animation-delay: -2s;">
+                                    <img class="slide2-smoke" style="animation-delay: -2s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -3.66s;">
+                                    <img class="slide2-smoke" style="animation-delay: -3.66s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                                <div class="slide2-smokeopacity" style="animation-delay: -5.33s;">
+                                    <img class="slide2-smoke" style="animation-delay: -5.33s;" src="images/slide2/smoke1.svg"/>
+                                </div>
+                            </div>
+                            <img class="canvas-background" style="padding-top: 4%;" src="images/slide2/background.svg"/>
+                            <img class="slide2-fan" style="left: 75%;bottom: 18%;animation-delay: -0s;width: 4%;" src="images/slide2/fan.svg"/>
+                            <img class="slide2-fan" style="left: 70.4%;bottom: 29%;animation-delay: -2s;width: 6.5%;" src="images/slide2/fan.svg"/>
+                            <img class="slide2-fan" style="left: 63.2%;bottom: 43%;animation-delay: -5s;width: 10%;" src="images/slide2/fan.svg"/>
+                            <img style="width: 0.4%;left: 76.2%;bottom: 27%;" src="images/slide2/fan-cover.svg"/>
+                            <img style="width: 0.6%;left: 72.3%;bottom: 43.4%;" src="images/slide2/fan-cover.svg"/>
+                            <img style="width: 0.9%;left: 66.15%;bottom: 64.5%;" src="images/slide2/fan-cover.svg"/>
+                            <img style="left: 68.5%;bottom: 2.5%;width: 24%;" src="images/slide2/foreground.svg"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="slide3" class="carousel-item">
+                    <!-- SLIDE 3 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Smart grids</h1>
+                                <h4 class="secondary-title">How do they function?</h4>
+                            </div>
+                            <div class="alltogehter-container">
+                                <img class="alltogether" src="images/slide3/alltogether4.svg"/>
+                                <div class="horizontal-arrows">
+                                    <img class="arrow" style="animation-delay: 0s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -1s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -2s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -3s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -4s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -5s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -6s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -7s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -8s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -9s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -10s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -11s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -12s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -13s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -14s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -15s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -16s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -17s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -18s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -19s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -20s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -21s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -22s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -23s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -24s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -25s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -26s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -27s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -28s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -29s;" src="images/slide3/arrow.svg"/>
+                                </div>
+                                <div class="diagonal-arrows">
+                                    <img class="arrow" style="animation-delay: 0s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -1s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -2s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -3s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -4s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -5s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -6s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -7s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -8s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -9s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -10s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -11s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -12s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -13s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -14s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -15s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -16s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -17s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -18s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -19s;" src="images/slide3/arrow.svg"/>
+                                </div>
+                                <div class="diagonal-arrows" style="transform: rotate(135deg);left: 38%;bottom: 44%;">
+                                    <img class="arrow" style="animation-delay: 0s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -1s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -2s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -3s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -4s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -5s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -6s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -7s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -8s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -9s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -10s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -11s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -12s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -13s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -14s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -15s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -16s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -17s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -18s;" src="images/slide3/arrow.svg"/>
+                                    <img class="arrow" style="animation-delay: -19s;" src="images/slide3/arrow.svg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-area">
+                        <div class="canvas">
+                            <img class="canvas-background" style="padding-top: 4%;" src="images/slide3/panorama.svg"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="slide4" class="carousel-item">
+                    <!-- SLIDE 4 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Smart meters</h1>
+                                <h4 class="secondary-title">Provide the Smart Grid interface between the consumer and the energy provider</h4>
+                            </div>
+                            <div class="row meter-container">
+                                <div class="col meter-box">
+                                    <div>
+                                        <img class="icon" src="images/slide4/meter.svg"/>
+                                        <img class="arrow" style="animation-delay: 1s;" src="images/slide4/arrow.svg"/>
+                                    </div>
+                                    <p>A Smart meter records the current electricity flow at regular intervals</p>
+                                </div>
+                                <div class="col meter-box" style="animation-delay: 2s;">
+                                    <div>
+                                        <img class="icon" src="images/slide4/signal.svg"/>
+                                        <img class="arrow" style="animation-delay: 3s;" src="images/slide4/arrow.svg"/>
+                                    </div>
+                                    <p>The usage information is sent to the data communications company</p>
+                                </div>
+                                <div class="col meter-box" style="animation-delay: 4s;">
+                                    <div>
+                                        <img class="icon" src="images/slide4/plant.svg"/>
+                                        <img class="arrow" style="animation-delay: 5s;" src="images/slide4/arrow.svg"/>
+                                    </div>
+                                    <p>Your energy supplier then recieves information about your electricity usage</p>
+                                </div>
+                                <div class="col meter-box" style="animation-delay: 6s;">
+                                    <div>
+                                        <img class="icon" src="images/slide4/bill.svg"/>
+                                    </div>
+                                    <p>An accurate energy bill is sent based on your consumption, which will help you keep track</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gradient"></div>
+                    </div>
+                    <img class="circucit" src="images/slide4/circucit.svg"/>
+                </div>
+
+                <div id="slide5" class="carousel-item">
+                    <!-- SLIDE 5 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Smard Grids benefits</h1>
+                                <h4 class="secondary-title"></h4>
+                            </div>
+                            <div class="row align-items-end">
+                                <div class="col benefits">
+                                    <p>Allow the switch from centralized to decentralized energy production</p>
+                                    <p>Reduce utility bills for consumers through the local energy generation</p>
+                                    <p>Reduce the chance of domino blackouts making the grid more resilient</p>
+                                    <p>Reduce global warming through the integration of decentralized renewable energy sources such as PV and wind into the grid</p>
+                                </div>
+                                <div class="col">
+                                    <div class="canvas">
+                                        <img class="canvas-background" style="padding-bottom: 10px;" src="images/slide5/background.svg"/>                                        
+                                        <img class="gear" style="width: 17%;left: 24.4%;bottom: 61%;" src="images/slide5/gear1.svg"/>
+                                        <img class="gear" style="left: 42.9%;bottom: 50.2%;width: 27%;" src="images/slide5/gear2.svg"/>
+                                        <img class="gear" style="width: 39%;left: 15.3%;bottom: 0.5%;" src="images/slide5/gear3.svg"/>
+                                        <img class="gear" style="bottom: 6%;left: 53.4%;width: 31%;" src="images/slide5/gear4.svg"/>
+                                        <img class="benefits-foreground" src="images/slide5/foreground.svg"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="slide6" class="carousel-item">
+                    <!-- SLIDE 6 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Smard Grids figures</h1>
+                                <h4 class="secondary-title"></h4>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-5 chart-container">
+                                    <div class="circle-container">
+                                        <canvas id="consumersChart" class="circle"></canvas>
+                                        <div id="consumersChartNum" class="chart-character number"></div>
+                                    </div>
+                                    <p>of European consumers have Smart Meter for electricity</p>
+                                </div>
+                                <div class="col-7 chart-container">
+                                    <div class="circle-container">
+                                        <img class="circle" src="images/slide6/circle.svg">
+                                        <div id="metersChartNum" class="chart-character number big"></div>
+                                        <div class="chart-character word">million</div>
+                                    </div>
+                                    <p>Member States rolled out close to 200 million smart meters for electricity and 45 million for gas for 2020 at a total investment of €45 billion</p>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-5 chart-container">
+                                    <div class="circle-container">
+                                        <canvas id="marketChart" class="circle"></canvas>
+                                        <div id="marketChartNum" class="chart-character number"></div>
+                                    </div>
+                                    <p>of market penetration for electricity</p>
+                                </div>
+                                <div class="col-7 chart-container">
+                                    <div class="circle-container">
+                                        <img class="circle" src="images/slide6/circle.svg">
+                                        <div id="benefitsChartNum" class="chart-character number big"></div>
+                                        <div class="chart-character word">benefit</div>
+                                    </div>
+                                    <p>Benefits per metering point of €309 for electricity along with 3% energy savings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="background" src="images/slide6/background.svg"/>
+                </div>
+
+                <div id="slide7" class="carousel-item">
+                    <!-- SLIDE 7 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Smard Grids related jobs</h1>
+                                <h4 class="secondary-title"></h4>
+                            </div>
+                            <div class="row row-flex">
+                                <div class="col">
+                                    <div class="jobs-box">
+                                        <img src="images/slide7/work.svg">
+                                        <p>Work related to the smart grid is expected to result in about <span class="highlighted">280 000 new positions</span>, according to energy consulting firm DNV KEMA.</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="jobs-box" style="animation-delay: 0.25s;">
+                                        <img src="images/slide7/factory.svg">
+                                        <p>Employment in the EU-28’s enviromental economy <span class="highlighted">rose from 2.8 million</span> full-time equivalents (FTEs) in 2000 <span class="highlighted">to 4.5 million</span> full-time equivalents in 2016.</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="jobs-box" style="animation-delay: 0.5s;">
+                                        <img src="images/slide7/europe.svg">
+                                        <p>Almost <span class="highlighted">one million new full-time equivalent jobs</span> have been created in the EU-27 between 2000 and 2017 through renewables and energy-efficiency measures.</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="jobs-box" style="animation-delay: 1s;">
+                                        <img src="images/slide7/arrows.svg">
+                                        <p>Employment related to renewables and energy efficiency <span class="highlighted">grew by a factor of 2.6</span> since 2000.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <img class="background" src="images/slide6/background.svg"/> -->
+                </div>
+
+                <div id="slide8" class="carousel-item">
+                    <!-- SLIDE 8 -->
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="title-area">
+                                <h1 class="main-title">Master Course Highlights</h1>
+                                <h4 class="secondary-title"></h4>
+                            </div>
+                            <div class="row bubble-area">
+                                <div class="bubble" style="width:21%;left:0;top:20%;animation-delay: 0.25s">
+                                    <img style="transform: rotate(-40deg)" src="images/slide8/bubble.svg"/>
+                                    <p style="top:48%">High quality education covering <span class="highlighted">Smart Grid fundamentals + Grid integration</span></p>
+                                </div>
+                                <div class="bubble" style="width:20%;left:20%;top:2%;animation-delay: 0.5s">
+                                    <img style="transform: rotate(-20deg)" src="images/slide8/bubble.svg"/>
+                                    <p><span class="highlighted">Virtual labs</span><br>a shared learning experience for the students across the universities</p>
+                                </div>
+                                <div class="bubble" style="width:26%;left:41%;top:15%;animation-delay: 0.75s">
+                                    <img style="transform: rotate(20deg)" src="images/slide8/bubble.svg"/>
+                                    <p><span class="highlighted">Living labs</span><br>testing knowledge in a real-life enviroment, recording and assessing the response of actual users</p>
+                                </div>
+                                <div class="bubble" style="width:15%;left:66%;top:2%;animation-delay: 1s">
+                                    <img style="transform: rotate(10deg)" src="images/slide8/bubble.svg"/>
+                                    <p>Close cooperation with the industry</p>
+                                </div>
+                                <div class="bubble" style="width:19%;right:0;top:15%;animation-delay: 1.25s">
+                                    <img style="transform: rotate(40deg)" src="images/slide8/bubble.svg"/>
+                                    <p style="top:48%">Possibility to study at three <span class="highlighted">leading universities around Europe</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="background" src="images/slide8/background.svg"/>
+                </div>
             </div>
-            <div class="body-content">
-                <h1>BODY CONTENT</h1>
+            
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#index-slider" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#index-slider" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+            
             </div>
 
+
+        
+        <div class="body-content">
+            <h1>BODY CONTENT</h1>
+        </div>
+
         <script>
+
+            $('#index-slider').on('slid.bs.carousel', function (e) {
+                if(e.to == 5){
+                    IndexSliderDrawCharts()
+                }
+            })
+
+            function IndexSliderDrawCharts(){       
+                const options = {
+                    borderWidth: 0,
+                    events: [],
+                    animation: {
+                        duration: 3000
+                    }
+                }         
+                new Chart(document.getElementById('consumersChart').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [72, 28],
+                            backgroundColor: [
+                            '#f9ae28',
+                            '#eff7f7'
+                            ]
+                        }]},
+                    options: options
+                })
+                new Chart(document.getElementById('marketChart').getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [80, 20],
+                            backgroundColor: [
+                            '#f9ae28',
+                            '#eff7f7'
+                            ]
+                        }]},
+                    options: options
+                })
+            }
 
         </script>
     </body>
