@@ -46,6 +46,24 @@
 #index-slider  p {
     font-size: 1.2em;
 }
+.carousel-control-prev > div, .carousel-control-next > div {
+    background-color: rgb(202 202 202 / 30%);
+    padding: 10px;
+    border-radius: 50%;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    display: block;
+}
+.carousel-control-next:focus, .carousel-control-prev:focus {
+    opacity: .5;
+}
+.carousel-indicators li {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin: 0 10px;
+    border-radius: 100%;
+}
 
 
 
