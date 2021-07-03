@@ -1,6 +1,10 @@
-
 $(document).ready(function () {
     sliderFitToScreenHeight()
+    $('#index-slider').on('slid.bs.carousel', function (e) {
+        if(e.to == 5){
+            IndexSliderDrawCharts()
+        }
+    })
 })
 
 $(window).resize(function () {
@@ -16,12 +20,6 @@ function sliderFitToScreenHeight() {
     var headerH = $(".main-header").height();
     $("#index-slider").height(windowH - headerH);
 }
-
-$('#index-slider').on('slid.bs.carousel', function (e) {
-    if(e.to == 5){
-        IndexSliderDrawCharts()
-    }
-})
 
 function IndexSliderDrawCharts(){       
     const options = {
