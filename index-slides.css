@@ -110,9 +110,15 @@
     left: 63%;
     z-index: -10 !important;
 }
+#index-slider #slide1 .man-with-swans {
+    bottom: -1.9%;
+    left: 85%;
+    width: 12%;
+    z-index: -10 !important;
+}
 #index-slider #slide1 #taxi {
     width: 5%;
-    bottom: 7%;
+    bottom: 8.1%;
     left: 15%;
     animation: taxi 40s infinite linear;
     animation-delay: -2s;
@@ -124,7 +130,7 @@
     position: absolute;
     width: 18%;
     left: 5%;
-    bottom: -2%;
+    bottom: -15%;
     animation: taxiwheel 2s infinite linear;
 }
 #index-slider #slide1 #taxi .taxi-wheel:last-of-type {
@@ -140,7 +146,7 @@
 }
 #index-slider #slide1 #redcar {
     width: 5%;
-    bottom: 11%;
+    bottom: 11.5%;
     left: 15%;
     animation: redcar 30s infinite linear;
     animation-delay: -5s;
@@ -153,7 +159,7 @@
     position: absolute;
     width: 15%;
     left: 10%;
-    bottom: -2%;
+    bottom: -15%;
     animation: redcarwheel 1.5s infinite linear;
 }
 #index-slider #slide1 #redcar .redcar-wheel:last-of-type {
