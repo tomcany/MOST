@@ -86,7 +86,7 @@
     cursor: pointer;
     width: 15px;
     height: 15px;
-    margin: 0 10px;
+    margin: 0 5px;
     border-radius: 100%;
 }
 #index-slider h1 {
@@ -100,6 +100,9 @@
 @media (min-width: 576px) {
     #index-slider .main-title {
         font-size: 2.5em;
+    }
+    .carousel-indicators li {
+        margin: 0 10px;
     }
 }
 
