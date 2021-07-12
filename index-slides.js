@@ -53,4 +53,22 @@ function IndexSliderDrawCharts(){
             }]},
         options: options
     })
+    
+    animateValue(document.getElementById("consumersChartNum"), 0, 72, 2000)
+    animateValue(document.getElementById("marketChartNum"), 0, 80, 2000)
+    animateValue(document.getElementById("metersChartNum"), 0, 245, 2000)
+    animateValue(document.getElementById("benefitsChartNum"), 0, 309, 2000)
+}
+
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1)
+            obj.innerHTML = Math.floor(progress * (end - start) + start)
+        if (progress < 1) {
+            window.requestAnimationFrame(step)
+        }
+    };
+    window.requestAnimationFrame(step)
 }

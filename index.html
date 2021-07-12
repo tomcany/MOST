@@ -67,7 +67,7 @@
             <h1>SITE HEADER</h1>
         </div>
 
-        <div id="index-slider" class="carousel slide" data-ride="false" data-interval="5000" data-pause="hover">
+        <div id="index-slider" class="carousel slide" data-ride="false" data-interval="false" data-pause="hover">
             <div id="index-slider-loading">
                 <div class="spinner-border"></div>
             </div>
@@ -137,19 +137,19 @@
                                 <h4 class="secondary-title">Sustainable goals towards affordable and clean energy</h4>
                             </div>
                             <div class="row">
-                                <div class="col slide2-box">
+                                <div class="col-md-4 slide2-box">
                                     <div>
                                         <h3>Digitalization</h3>
                                         <p>Smart grid is digital, interconnected and automated, with many technologies involved, including artificial intelligence or the Internet of Things.</p>
                                     </div>
                                 </div>
-                                <div class="col slide2-box">
+                                <div class="col-md-4 slide2-box">
                                     <div>
                                         <h3>Decarbonization</h3>
                                         <p>Smart Grid is a set of technologies and procedures to foster renewable energy sources (RES), efficiency, and electrification of end-users.</p>
                                     </div>
                                 </div>
-                                <div class="col slide2-box">
+                                <div class="col-md-4 slide2-box">
                                     <div>
                                         <h3>Decentralization</h3>
                                         <p>Smart Grid provides tools to enable the decentralized operation of energy systems that is crucial to efficiently manage RES while adding flexibility.</p>
@@ -334,28 +334,28 @@
                                 <h4 class="secondary-title">Provide the Smart Grid interface between the consumer and the energy provider</h4>
                             </div>
                             <div class="row meter-container">
-                                <div class="col meter-box">
+                                <div class="col-6 col-md-3 meter-box">
                                     <div>
                                         <img class="icon" src="images/slide4/meter.svg"/>
                                         <img class="arrow" style="animation-delay: 0;" src="images/slide4/arrow.svg"/>
                                     </div>
                                     <p>A Smart meter records the current electricity flow at regular intervals</p>
                                 </div>
-                                <div class="col meter-box" style="animation-delay: 0.5s;">
+                                <div class="col-6 col-md-3 meter-box" style="animation-delay: 0.5s;">
                                     <div>
                                         <img class="icon" src="images/slide4/signal.svg"/>
                                         <img class="arrow" style="animation-delay: 0.5s;" src="images/slide4/arrow.svg"/>
                                     </div>
                                     <p>The usage information is sent to the data communications company</p>
                                 </div>
-                                <div class="col meter-box" style="animation-delay: 1s;">
+                                <div class="col-6 col-md-3 meter-box" style="animation-delay: 1s;">
                                     <div>
                                         <img class="icon" src="images/slide4/plant.svg"/>
                                         <img class="arrow" style="animation-delay: 1s;" src="images/slide4/arrow.svg"/>
                                     </div>
                                     <p>Your energy supplier then recieves information about your electricity usage</p>
                                 </div>
-                                <div class="col meter-box" style="animation-delay: 1.5s;">
+                                <div class="col-6 col-md-3 meter-box" style="animation-delay: 1.5s;">
                                     <div>
                                         <img class="icon" src="images/slide4/bill.svg"/>
                                     </div>
@@ -377,13 +377,13 @@
                                 <h4 class="secondary-title"></h4>
                             </div>
                             <div class="row align-items-end">
-                                <div class="col benefits">
+                                <div class="col-12 col-md-6 benefits">
                                     <p>Allow the switch from centralized to decentralized energy production</p>
                                     <p>Reduce utility bills for consumers through the local energy generation</p>
                                     <p>Reduce the chance of domino blackouts making the grid more resilient</p>
                                     <p>Reduce global warming through the integration of decentralized renewable energy sources such as PV and wind into the grid</p>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-md-6">
                                     <div class="canvas">
                                         <img class="canvas-background" style="padding-bottom: 10px;" src="images/slide5/background.svg"/>                                        
                                         <img class="gear" style="width: 17%;left: 24.4%;bottom: 61%;" src="images/slide5/gear1.svg"/>
@@ -406,35 +406,35 @@
                                 <h1 class="main-title">Smard Grids figures</h1>
                                 <h4 class="secondary-title"></h4>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-5 chart-container">
+                            <div class="row mb-md-5">
+                                <div class="col-12 col-md-5 chart-container">
                                     <div class="circle-container">
                                         <canvas id="consumersChart" class="circle"></canvas>
-                                        <div id="consumersChartNum" class="chart-character number"></div>
+                                        <div class="chart-character number"><span id="consumersChartNum">0</span>%</div>
                                     </div>
                                     <p>of European consumers have Smart Meter for electricity</p>
                                 </div>
-                                <div class="col-7 chart-container">
+                                <div class="col-12 col-md-7 chart-container">
                                     <div class="circle-container">
                                         <img class="circle" src="images/slide6/circle.svg">
-                                        <div id="metersChartNum" class="chart-character number big"></div>
+                                        <div class="chart-character number big"><span id="metersChartNum">0</span></div>
                                         <div class="chart-character word">million</div>
                                     </div>
                                     <p>Member States rolled out close to 200 million smart meters for electricity and 45 million for gas for 2020 at a total investment of €45 billion</p>
                                 </div>
                             </div>
-                            <div class="row mb-5">
-                                <div class="col-5 chart-container">
+                            <div class="row">
+                                <div class="col-12 col-md-5 chart-container">
                                     <div class="circle-container">
                                         <canvas id="marketChart" class="circle"></canvas>
-                                        <div id="marketChartNum" class="chart-character number"></div>
+                                        <div class="chart-character number"><span id="marketChartNum">0</span>%</div>
                                     </div>
                                     <p>of market penetration for electricity</p>
                                 </div>
-                                <div class="col-7 chart-container">
+                                <div class="col-12 col-md-7 chart-container">
                                     <div class="circle-container">
                                         <img class="circle" src="images/slide6/circle.svg">
-                                        <div id="benefitsChartNum" class="chart-character number big"></div>
+                                        <div class="chart-character number big">€<span id="benefitsChartNum">0</span></div>
                                         <div class="chart-character word">benefit</div>
                                     </div>
                                     <p>Benefits per metering point of €309 for electricity along with 3% energy savings</p>
@@ -454,25 +454,25 @@
                                 <h4 class="secondary-title"></h4>
                             </div>
                             <div class="row row-flex">
-                                <div class="col">
+                                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
                                     <div class="jobs-box">
                                         <img src="images/slide7/work.svg">
                                         <p>Work related to the smart grid is expected to result in about <span class="highlighted">280 000 new positions</span>, according to energy consulting firm DNV KEMA.</p>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
                                     <div class="jobs-box" style="animation-delay: 0.25s;">
                                         <img src="images/slide7/factory.svg">
                                         <p>Employment in the EU-28’s enviromental economy <span class="highlighted">rose from 2.8 million</span> full-time equivalents (FTEs) in 2000 <span class="highlighted">to 4.5 million</span> full-time equivalents in 2016.</p>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
                                     <div class="jobs-box" style="animation-delay: 0.5s;">
                                         <img src="images/slide7/europe.svg">
                                         <p>Almost <span class="highlighted">one million new full-time equivalent jobs</span> have been created in the EU-27 between 2000 and 2017 through renewables and energy-efficiency measures.</p>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-12 col-lg-3 mb-2 mb-lg-0">
                                     <div class="jobs-box" style="animation-delay: 1s;">
                                         <img src="images/slide7/arrows.svg">
                                         <p>Employment related to renewables and energy efficiency <span class="highlighted">grew by a factor of 2.6</span> since 2000.</p>
@@ -493,25 +493,25 @@
                                 <h4 class="secondary-title"></h4>
                             </div>
                             <div class="row bubble-area">
-                                <div class="bubble" style="width:21%;left:0;top:20%;animation-delay: 0.25s">
+                                <div class="bubble b1">
                                     <img style="transform: rotate(-40deg)" src="images/slide8/bubble.svg"/>
-                                    <p style="top:48%">High quality education covering <span class="highlighted">Smart Grid fundamentals + Grid integration</span></p>
+                                    <p>High quality education covering <span class="highlighted">Smart Grid fundamentals + Grid integration</span></p>
                                 </div>
-                                <div class="bubble" style="width:20%;left:20%;top:2%;animation-delay: 0.5s">
+                                <div class="bubble b2">
                                     <img style="transform: rotate(-20deg)" src="images/slide8/bubble.svg"/>
                                     <p><span class="highlighted">Virtual labs</span><br>a shared learning experience for the students across the universities</p>
                                 </div>
-                                <div class="bubble" style="width:26%;left:41%;top:15%;animation-delay: 0.75s">
+                                <div class="bubble b3">
                                     <img style="transform: rotate(20deg)" src="images/slide8/bubble.svg"/>
                                     <p><span class="highlighted">Living labs</span><br>testing knowledge in a real-life enviroment, recording and assessing the response of actual users</p>
                                 </div>
-                                <div class="bubble" style="width:15%;left:66%;top:2%;animation-delay: 1s">
+                                <div class="bubble b4">
                                     <img style="transform: rotate(10deg)" src="images/slide8/bubble.svg"/>
                                     <p>Close cooperation with the industry</p>
                                 </div>
-                                <div class="bubble" style="width:19%;right:0;top:15%;animation-delay: 1.25s">
+                                <div class="bubble b5">
                                     <img style="transform: rotate(40deg)" src="images/slide8/bubble.svg"/>
-                                    <p style="top:48%">Possibility to study at three <span class="highlighted">leading universities around Europe</span></p>
+                                    <p>Possibility to study at three <span class="highlighted">leading universities around Europe</span></p>
                                 </div>
                             </div>
                         </div>
