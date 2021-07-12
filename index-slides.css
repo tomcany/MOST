@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 
 #index-slider {
-    min-height: unset;
+    min-height: 490px;
 }
 #index-slider-loading {
     display: flex;
