@@ -856,22 +856,23 @@
     #index-slider #slide8 .bubble img {
         display: block;
     }
-    .bubble.b1 {
-        width:21%;left:0;top:20%;animation-delay: 0.25s
+    #index-slider #slide8 .bubble.b1 {
+        width:21%;left:0;top:20%;animation-delay: 0.25s !important
     }
-    .bubble.b2 {
-        width:20%;left:20%;top:2%;animation-delay: 0.5s
+    #index-slider #slide8 .bubble.b2 {
+        width:20%;left:20%;top:2%;animation-delay: 0.5s !important
     }
-    .bubble.b3 {
-        width:26%;left:41%;top:15%;animation-delay: 0.75s
+    #index-slider #slide8 .bubble.b3 {
+        width:26%;left:41%;top:15%;animation-delay: 0.75s !important
     }
-    .bubble.b4 {
-        width:15%;left:66%;top:2%;animation-delay: 1s
+    #index-slider #slide8 .bubble.b4 {
+        width:15%;left:66%;top:2%;animation-delay: 1s !important
     }
-    .bubble.b5 {
-        width:19%;right:0;top:15%;animation-delay: 1.25s
+    #index-slider #slide8 .bubble.b5 {
+        width:19%;right:0;top:15%;animation-delay: 1.25s !important
     }
-    .bubble.b1 p, .bubble.b5 p {
+
+    #index-slider #slide8 .bubble.b1 p, #index-slider #slide8 .bubble.b5 p {
         top:48%
     }
 }
