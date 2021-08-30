@@ -168,6 +168,16 @@
     left: 63%;
     z-index: -10 !important;
 }
+#index-slider #slide1 #houses-foreground-1 {
+    width: 21.3%;
+    left: 0;
+    bottom: 13.2%;
+}
+#index-slider #slide1 #houses-foreground-2 {
+    width: 10.85%;
+    left: 39.75%;
+    bottom: 31.0%;
+}
 #index-slider #slide1 .man-with-swans {
     bottom: -1.9%;
     left: 85%;
@@ -232,9 +242,10 @@
     to {transform: rotate(-360deg)}
 }
 #index-slider #slide1 .fan {
-    width: 4.5%;
+    width: 5.5%;
     animation: fan 10s infinite linear;
     transform-origin: 60% 55%;
+    z-index: -21;
 }
 @keyframes fan {
     0% {transform: rotate(0)}
@@ -254,6 +265,7 @@
     left: 52%;
     bottom: 91%;
     animation: balloonmove 15s infinite ease;
+    z-index: -22;
 }
 #index-slider #slide1 .balloon {
     animation: balloonrotate 15s infinite ease;
@@ -449,19 +461,24 @@
     z-index: -5;
 }
 #index-slider #slide3 .horizontal-arrows .arrow {
-    animation: arrow-horizontal 30s infinite linear;
-    bottom: 48%;
+    animation: arrow-horizontal 20s infinite linear;
+    bottom: 47%;
+}
+#index-slider #slide3 .horizontal-arrows.absolute {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
 }
 @keyframes arrow-horizontal {
-    0% {left: 27%}
-    100% {left: 72%}
+    0% {left: 25%}
+    100% {left: 50%}
 }
 #index-slider #slide3 .diagonal-arrows {
     position: absolute;
     width: 25%;
-    left: 36%;
+    left: 37%;
     bottom: 52%;
-    transform: rotate(-45deg);
+    transform: rotate(-55deg);
     z-index: -10;
 }
 #index-slider #slide3 .diagonal-arrows .arrow {
