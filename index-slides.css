@@ -120,7 +120,7 @@
 
 @media (min-width: 992px) {
     #index-slider {
-        min-height: 760px;
+        min-height: 815px;
         max-height: 1000px;
     }
     #index-slider p {
@@ -902,4 +902,13 @@
     #index-slider #slide8 .background {
         bottom: -90px;
     }
+}
+
+/* SLIDE 9 */
+
+#index-slider #slide9 {
+    background-image: url(images/slide9/background.jpg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
